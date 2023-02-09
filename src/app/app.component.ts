@@ -10,6 +10,4 @@ import { TweetComponent } from './share/tweet/tweet.component';
 export class AppComponent {
   title = 'twitter-web3';
 
-
-
 }
