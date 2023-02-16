@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Tweet } from '../model/tweet';
+import { UserService } from './user.service';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +13,17 @@ export class TweetService {
 
   protected tweets: any[] = [];
 
-  constructor() {
-    let tweet = new Tweet(new Date(),"Tweet1","Miguel",25,[],[],[]);
+  constructor(private userService: UserService) {
+
+    let author:User | null = this.userService.getUser('@alvaro');
+
+    let tweet = new Tweet(new Date(),"Tweet1",author,25,[],[],[]);
     this.tweets.push(tweet);
-    tweet = new Tweet(new Date(),"Tweet2","Juan",25,[],[],[]);
+    tweet = new Tweet(new Date(),"Tweet2",author,25,[],[],[]);
     this.tweets.push(tweet);
-    tweet = new Tweet(new Date(),"Tweet3","Pedro",25,[],[],[]);
+    tweet = new Tweet(new Date(),"Tweet3",author,25,[],[],[]);
     this.tweets.push(tweet);
-    tweet = new Tweet(new Date(),"Tweet4","Ramon",25,[],[],[]);
+    tweet = new Tweet(new Date(),"Tweet4",author,25,[],[],[]);
     this.tweets.push(tweet);
   }
 
